@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <!-- 2. 必吃美食 Tab (新增分店與但馬屋) -->
+    <!-- 2. 必吃美食 Tab -->
     <div v-if="currentTab === 'food'" class="space-y-4">
       <div class="bg-gradient-to-r from-amber-500 to-orange-400 text-white rounded-2xl p-4 shadow-md text-center">
         <div class="text-base font-black tracking-wider"><i class="fa-solid fa-utensils mr-2"></i>必吃美食推薦</div>
@@ -210,43 +210,45 @@
         <h3 class="font-bold text-sm text-gray-800 flex items-center">
           <i class="fa-solid fa-plane-flight text-kuma-red mr-2"></i>航班資訊 (虎航 / 高雄出發)
         </h3>
+        <!-- 去程更新為 IT766 -->
         <div class="bg-gray-50 rounded-xl p-3 border border-gray-200">
           <div class="flex justify-between items-center text-xs font-bold text-gray-500 mb-2">
-            <span><i class="fa-solid fa-plane-departure text-kuma-red mr-1"></i>去程 IT270</span>
+            <span><i class="fa-solid fa-plane-departure text-kuma-red mr-1"></i>去程 IT766</span>
             <span>2027/04/23 (Fri)</span>
           </div>
           <div class="flex justify-between items-center">
             <div class="text-center">
               <div class="text-xl font-black text-gray-800">KHH</div>
-              <div class="text-[10px] text-gray-500">高雄 13:30</div>
+              <div class="text-[10px] text-gray-500">高雄 08:45</div>
             </div>
             <div class="flex flex-col items-center">
-              <span class="text-[10px] text-gray-400">2h 15m</span>
+              <span class="text-[10px] text-gray-400">2h 05m</span>
               <i class="fa-solid fa-arrow-right text-gray-400 text-xs"></i>
             </div>
             <div class="text-center">
               <div class="text-xl font-black text-gray-800">KMJ</div>
-              <div class="text-[10px] text-gray-500">熊本 16:45</div>
+              <div class="text-[10px] text-gray-500">熊本 11:50</div>
             </div>
           </div>
         </div>
+        <!-- 回程更新為 IT767 -->
         <div class="bg-gray-50 rounded-xl p-3 border border-gray-200">
           <div class="flex justify-between items-center text-xs font-bold text-gray-500 mb-2">
-            <span><i class="fa-solid fa-plane-arrival text-kuma-red mr-1"></i>回程 IT271</span>
+            <span><i class="fa-solid fa-plane-arrival text-kuma-red mr-1"></i>回程 IT767</span>
             <span>2027/04/27 (Tue)</span>
           </div>
           <div class="flex justify-between items-center">
             <div class="text-center">
               <div class="text-xl font-black text-gray-800">KMJ</div>
-              <div class="text-[10px] text-gray-500">熊本 17:35</div>
+              <div class="text-[10px] text-gray-500">熊本 19:50</div>
             </div>
             <div class="flex flex-col items-center">
-              <span class="text-[10px] text-gray-400">2h 20m</span>
+              <span class="text-[10px] text-gray-400">2h 50m</span>
               <i class="fa-solid fa-arrow-right text-gray-400 text-xs"></i>
             </div>
             <div class="text-center">
               <div class="text-xl font-black text-gray-800">KHH</div>
-              <div class="text-[10px] text-gray-500">高雄 18:55</div>
+              <div class="text-[10px] text-gray-500">高雄 21:40</div>
             </div>
           </div>
         </div>
@@ -449,7 +451,6 @@
       const fxJpy = ref(1000);
       const calculatedTwd = computed(() => Math.round((fxJpy.value || 0) * exchangeRate.value));
 
-      // 更新版：必吃美食資料清單
       const mustEatList = ref([
         { id: 1, name: '黑亭拉麵', address: '熊本市西区二本木2丁目1-23', transport: '熊本車站步行8分鐘', hours: '10:30〜21:00', off: '無定休' },
         { id: 2, name: '勝烈亭豬排 (熊本車站店)', address: '熊本市西区春日3-15−26', transport: '熊本車站步行1分鐘', hours: '11:00~22:00', off: '無定休' },
@@ -459,7 +460,7 @@
 
       const itineraryData = ref([
         [
-          { id: '1-1', category: 'flight', title: '高雄小港(KHH) ➔ 熊本(KMJ) IT270', location: '熊本機場', time: '13:30 起飛 / 16:45 抵達', note: '抵達後前往飯店 Check-in', transportType: 'car', travelTime: '35' },
+          { id: '1-1', category: 'flight', title: '高雄小港(KHH) ➔ 熊本(KMJ) IT766', location: '熊本機場', time: '08:45 起飛 / 11:50 抵達', note: '抵達後前往飯店 Check-in', transportType: 'car', travelTime: '35' },
           { id: '1-2', category: 'spot', title: '熊本熊廣場', hours: '10:00 - 19:00', ticket: '免費', note: '與部長見面，選購限定周邊', transportType: 'walk', travelTime: '10' },
           { id: '1-3', category: 'food', title: '櫻町、上通、下通 (晚餐)', hours: '依各店家而定', note: '推薦品嚐熊本勝烈亭豬排', transportType: 'walk', travelTime: '5' }
         ],
@@ -477,7 +478,7 @@
           { id: '4-1', category: 'spot', title: '阿蘇火山', hours: '全天開放 (視天候氣體狀況限制)', ticket: '纜車/接駁車另計', note: '欣賞壯麗火山口與草千里風景', transportType: 'car', travelTime: '60' }
         ],
         [
-          { id: '5-1', category: 'other', title: '自由行程 (尚未排定)', note: '準備搭乘 IT271 17:35 班機回高雄', transportType: 'car', travelTime: '40' }
+          { id: '5-1', category: 'other', title: '自由行程 (尚未排定)', note: '準備搭乘 IT767 19:50 班機回高雄', transportType: 'car', travelTime: '40' }
         ]
       ]);
 
